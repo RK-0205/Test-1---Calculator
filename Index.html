@@ -30,28 +30,27 @@
     
       <script>
         const buttonsNums = [
-          {num: 0},
-          {num: 1},
-          {num: 2},
-          {num: 3},
-          {num: 4},
-          {num: 5},
-          {num: 6},
-          {num: 7},
-          {num: 8},
-          {num: 9},
-        ]
-
-        const buttonsOper = [
-          {plus: "+"},
-          {minus: "-"},
-          {multiplier: "X"},
-          {divider: "/"},
-          {proc: "%"},
-          {exchange: "+/-"},
-          {equival: "="},
-          {clean: "AC"}
-        ]
+          {btn: "AC"},
+          {btn: "+/-"},
+          {btn: "%"},
+          {btn: "/"},
+          {btn: 7},
+          {btn: 8},
+          {btn: 9},
+          {btn: "X"},
+          {btn: 4},
+          {btn: 5},
+          {btn: 6},
+          {btn: "-"},          
+          {btn: 1},
+          {btn: 2},
+          {btn: 3},
+          {btn: "+"},
+          {btn: 0},
+          {btn: "."},
+          {btn: "="}         
+          
+        ]        
 
         function createBody() {
           let body = document.createElement('div')
@@ -66,12 +65,14 @@
 
           let buttons = document.createElement('div')
           buttons.className = 'buttons'
-          let button = document.createElement('div')
-
-          buttonsNums.map (item => {
-            let button = document.createElement('div');
-            button.innerHTML = `<p>${item.num}<p>`
+          
+          buttonsNums.forEach ((item, index) => {
+            let button = document.createElement('button');
+            button.innerHTML = `<p>${item.btn}</p>`
             buttons.appendChild(button)
+            if (index === buttonsNums.length - 1) {
+              button.classList.add('special')
+            }
           })
           screen.appendChild(screenField)
           body.appendChild(screen)
