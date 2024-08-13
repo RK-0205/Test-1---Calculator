@@ -48,10 +48,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    justify-items: stretch;
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .buttons .special {
     grid-column: span 2; /* Розтягує елемент на дві колонки */
+    width: auto;
+    height: 50px;
+    border-radius: 25px;
 }
