@@ -3,6 +3,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: beige;
 }
 
 .wrapper {
@@ -12,7 +13,7 @@ body {
     flex-direction: column;
     background-color: black;
     width: 300px;
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 6px 12px rgb(0, 0, 0, 0.5);
     }
 
@@ -27,7 +28,18 @@ body {
     background-color: rgb(255, 255, 255);
     width: 260px;
     border-radius: 15px;
+    font-size: 20px;    
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    
 }
+#screenField > p {
+    margin-right: 20px;
+    font-weight:bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 
 .buttons {
     display: grid;
@@ -37,6 +49,7 @@ body {
     width: auto;
     gap: 15px;
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 .buttons > button {
@@ -63,7 +76,8 @@ body {
 }
 
 button:active {
-    background-color: rgb(176, 234, 171);
+    background-color: rgb(150, 155, 149);
+    color:whitesmoke;
     box-shadow: 3px 3px 6px rgb(255, 255, 255, 0.5);;
 }
 

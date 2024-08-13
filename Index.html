@@ -61,7 +61,7 @@
           let screenField = document.createElement('div')
           screenField.id = 'screenField'
           /*screenField.setAttribute('border', '1px solid black')*/
-          screenField.innerHTML = '<p>123 </p>'
+          screenField.innerHTML = '<p>0</p>'
 
           let buttons = document.createElement('div')
           buttons.className = 'buttons'
@@ -73,6 +73,7 @@
             if (index === buttonsNums.length - 1) {
               button.classList.add('special')
             }
+            
           })
           screen.appendChild(screenField)
           body.appendChild(screen)
