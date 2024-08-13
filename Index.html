@@ -61,14 +61,15 @@
           let screenField = document.createElement('div')
           screenField.id = 'screenField'
           /*screenField.setAttribute('border', '1px solid black')*/
-          screenField.innerHTML = '<p>0</p>'
+          screenField.innerHTML = '0'
 
           let buttons = document.createElement('div')
           buttons.className = 'buttons'
           
           buttonsNums.forEach ((item, index) => {
             let button = document.createElement('button');
-            button.innerHTML = `<p>${item.btn}</p>`
+            button.innerHTML = `<p>${item.btn}</p>`  
+            button.addEventListener ('click', () => handleButtonClick(item.btn))       
             buttons.appendChild(button)
             if (index === buttonsNums.length - 1) {
               button.classList.add('special')
@@ -85,7 +86,40 @@
 
         createBody()
 
+        let currentNumber = '';
+        let operator = '';
+        let previousNumber = '';
 
+        function clearScreen() {
+          currentNumber = '';
+          operator = '';
+          previousNumber = '';
+          document.getElementById('screenField').innerText = '0';
+        }
+
+        function handleButtonClick(btn) {
+          if (btn === 'AC') {
+            clearScreen();
+          } else if (btn === '+/-') {
+            toggleSign();
+          } else if (btn === '=') {
+            calculate();
+          } else if (['+', '-', 'x', '/'].includes(btn)) {
+            setOperator(btn);
+          } else {
+            appendNumber(btn);
+          }
+        }
+
+        function updateScreen () {
+          document.getElementById('screenField').innerHTML = currentNumber || '0';
+        }
+
+        function appendNumber(num) {
+          if (num === '.' && currentNumber.includes('.')) return;
+          currentNumber += num;
+          updateScreen();
+        }
 
       </script>
        
