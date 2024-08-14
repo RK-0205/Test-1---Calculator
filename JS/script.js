@@ -98,14 +98,17 @@ const buttonsNums = [
 
   //функція для операторів
   function setOperator (oper) {
-    if (currentNumber === '') return;
-    if (previousNumber !== '') {
-      calculate()
-    }
+    if (currentNumber !== '') {
+      if (previousNumber !== '') {
+        calculate()
+      }
 
-    operator = oper
-    previousNumber = currentNumber
-    currentNumber = ''
+      operator = oper
+      previousNumber = currentNumber
+      currentNumber = ''
+    } else {
+      operator = oper
+    } 
 
   }
 
