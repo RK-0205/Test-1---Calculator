@@ -10,24 +10,7 @@
     <link href="../MyVeryFirstGitUseProject/Style/style.css" rel="stylesheet" />
        
 </head> 
-<body>
-<!-- My comment rom.kiriy@gmail.com!
-  <div class="wrapper">
-    <div class="container">
-      <h1>Title</h1>
-      <div class="screen">
-        <h1>Hello, world</h1>
-      </div>
-      <div class="buttons">
-        <h1>Buttons block</h1>
-        <input type="button" value="1">
-        The first button-->
-        <!-- <input type="button" value="2">
-        <input type="button" value="3">
-      </div>
-    </div>
-  </div>      --> 
-    
+<body>   
       <script>
         const buttonsNums = [
           {btn: "AC"},
@@ -51,7 +34,7 @@
           {btn: "="}         
           
         ]        
-
+        //Cтворюємо калькулятор
         function createBody() {
           let body = document.createElement('div')
           body.className = 'wrapper'
@@ -59,8 +42,7 @@
           let screen = document.createElement('div')
           screen.className = 'screen'
           let screenField = document.createElement('div')
-          screenField.id = 'screenField'
-          /*screenField.setAttribute('border', '1px solid black')*/
+          screenField.id = 'screenField'          
           screenField.innerHTML = '0'
 
           let buttons = document.createElement('div')
@@ -86,17 +68,7 @@
 
         createBody()
 
-        let currentNumber = '';
-        let operator = '';
-        let previousNumber = '';
-
-        function clearScreen() {
-          currentNumber = '';
-          operator = '';
-          previousNumber = '';
-          document.getElementById('screenField').innerText = '0';
-        }
-
+        // функція обробки кліків
         function handleButtonClick(btn) {
           if (btn === 'AC') {
             clearScreen();
@@ -106,19 +78,92 @@
             calculate();
           } else if (['+', '-', 'x', '/'].includes(btn)) {
             setOperator(btn);
+          } else if (btn === '%') {
+            calculatePercentage();
           } else {
             appendNumber(btn);
           }
         }
 
+        //блок змінних
+        let currentNumber = '';
+        let operator = '';
+        let previousNumber = '';
+
+        // функція очистки екрану
+        function clearScreen() {
+          currentNumber = '';
+          operator = '';
+          previousNumber = '';
+          document.getElementById('screenField').innerText = '0';
+        }        
+
+        //функція оновлення екрану
         function updateScreen () {
           document.getElementById('screenField').innerHTML = currentNumber || '0';
         }
 
+        //функція виведення цифр на екран
         function appendNumber(num) {
           if (num === '.' && currentNumber.includes('.')) return;
           currentNumber += num;
           updateScreen();
+        }
+
+        //функція для операторів
+        function setOperator (oper) {
+          if (currentNumber === '') return;
+          if (previousNumber !== '') {
+            calculate()
+          }
+
+          operator = oper
+          previousNumber = currentNumber
+          currentNumber = ''
+
+        }
+
+        //функція для обчислення
+        function calculate () {
+          if (previousNumber === '' || currentNumber === '') return;
+          switch (operator) {
+            case '+':
+              currentNumber = (parseFloat(previousNumber) + parseFloat(currentNumber)).toString()
+              break;
+            case '-':
+              currentNumber = (parseFloat(previousNumber) - parseFloat(currentNumber)).toString()
+              break;
+            case 'x':
+              currentNumber = (parseFloat(previousNumber) * parseFloat(currentNumber)).toString()
+              break;
+            case '/':
+              currentNumber = (parseFloat(previousNumber) / parseFloat(currentNumber)).toString()
+              break;
+            
+          }
+
+          operator = '';
+          previousNumber = '';
+          updateScreen()
+
+        }
+
+        //функція для зміни знаку перед числом
+        function toggleSign () {
+          if (currentNumber === '') return;
+          if (currentNumber.startsWith('-')) {
+            currentNumber = currentNumber.slice(1)
+          } else {
+            currentNumber = '-' + currentNumber
+          }
+          updateScreen();
+        }
+
+        //функція розрахунку відсотка
+        function calculatePercentage () {
+          if (previousNumber === '') return;
+          currentNumber = (parseFloat(previousNumber) * parseFloat(currentNumber) / 100)
+          updateScreen()
         }
 
       </script>
