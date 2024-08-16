@@ -61,7 +61,7 @@ body {
     justify-items: stretch;
     font-size: 20px;
     transition: ease 100ms;
-    box-shadow: 2px 2px 4px rgb(255, 255, 255, 0.5);
+    box-shadow: 3px 3px 0px rgb(255, 255, 255, 0.5);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -75,6 +75,7 @@ body {
 button:active {
     background-color: rgb(150, 155, 149);
     color:whitesmoke;
-    box-shadow: 3px 3px 6px rgb(255, 255, 255, 0.5);;
+    box-shadow: none;
+    transform: translateY(3px);
 }
 

@@ -19,7 +19,13 @@ const buttonsNums = [
     {btn: "."},
     {btn: "="}         
     
-  ]        
+  ]
+  
+  //блок змінних
+  let currentNumber = '';
+  let operator = '';
+  let previousNumber = '';
+  
   //Cтворюємо калькулятор
   function createBody() {
     let body = document.createElement('div')
@@ -71,11 +77,7 @@ const buttonsNums = [
     }
   }
 
-  //блок змінних
-  let currentNumber = '';
-  let operator = '';
-  let previousNumber = '';
-
+  
   // функція очистки екрану
   function clearScreen() {
     currentNumber = '';
